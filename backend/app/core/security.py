@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 import jwt
 
@@ -10,12 +10,12 @@ def create_access_token(
     roles: list[str],
     expires_delta: timedelta,
 ) -> str:
-    expires_at = datetime.now(timezone.utc) + expires_delta
+    issued_at = datetime.now(UTC)
+    expires_at = issued_at + expires_delta
     payload = {
         "sub": subject,
         "roles": roles,
         "exp": expires_at,
-        "iat": datetime.now(timezone.utc),
+        "iat": issued_at,
     }
     return jwt.encode(payload, settings.jwt_secret, algorithm=settings.jwt_algorithm)
-

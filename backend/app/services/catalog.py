@@ -17,7 +17,9 @@ class DashboardCatalog:
             Dashboard(
                 id="sales-performance",
                 title="Sales Performance",
-                description="Pipeline, territory, and quota performance for the sales organization.",
+                description=(
+                    "Pipeline, territory, and quota performance for the sales organization."
+                ),
                 provider="tableau",
                 group="Sales",
                 tags=["sales", "pipeline", "quota"],
@@ -37,4 +39,3 @@ class DashboardCatalog:
 
 
 dashboard_catalog = DashboardCatalog()
-
